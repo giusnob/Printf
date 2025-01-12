@@ -18,7 +18,6 @@ typedef struct s_flags {
     int plus;        // Flag '+'
 } t_flags;
 
-// Funzioni principali
 int ft_printf(const char *format, ...);
 
 // Funzioni di supporto
