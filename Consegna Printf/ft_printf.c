@@ -1,40 +1,46 @@
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+static int	handle_case(char end, va_list *args, t_flags flags)
 {
-    va_list args;
-    int len = 0;
-    t_flags flags;
+	if (end == 'c')
+		return (handle_char(args, flags));
+	else if (end == 's')
+		return (handle_string(args, flags));
+	else if (end == 'd' || end == 'i')
+		return (handle_decimal(args, flags));
+	else if (end == 'u')
+		return (handle_unsigned(args, flags));
+	else if (end == 'x' || end == 'X')
+		return (handle_hex(args, flags, end));
+	else if (end == 'p')
+		return (handle_pointer(args, flags));
+	else if (end == '%')
+		return (handle_percent(flags));
+	else
+		return (ft_putchar(end));
+}
 
-    va_start(args, format);
-    while (*format)
-    {
-        if (*format == '%')
-        {
-            format++;
-            flags = (t_flags){0, -1, 0, 0, 0, 0, 0};
-            parse_flags(&format, &args, &flags);
-            if (*format == 'c')
-                len += handle_char(&args, flags);
-            else if (*format == 's')
-                len += handle_string(&args, flags);
-            else if (*format == 'd' || *format == 'i')
-                len += handle_decimal(&args, flags);
-            else if (*format == 'u')
-                len += handle_unsigned(&args, flags);
-            else if (*format == 'x' || *format == 'X')
-                len += handle_hex(&args, flags, *format);
-            else if (*format == 'p')
-                len += handle_pointer(&args, flags);
-            else if (*format == '%')
-                len += handle_percent(flags);
-            else
-                len += ft_putchar(*format);
-        }
-        else
-            len += ft_putchar(*format);
-        format++;
-    }
-    va_end(args);
-    return (len);
+int	ft_printf(const char *format, ...)
+{
+	va_list		args;
+	int			len;
+	t_flags		flags;
+
+	len = 0;
+	va_start(args, format);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			flags = (t_flags){0, -1, 0, 0, 0, 0, 0};
+			parse_flags(&format, &args, &flags);
+			len += handle_case(*format, &args, flags);
+		}
+		else
+			len += ft_putchar(*format);
+		format++;
+	}
+	va_end(args);
+	return (len);
 }
