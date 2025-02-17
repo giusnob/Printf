@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils_bonus.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ginobile <ginobile@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/12 15:24:36 by ginobile          #+#    #+#             */
+/*   Updated: 2025/02/17 14:36:28 by ginobile         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	apply_width(int width, int content_len, char pad)
@@ -36,7 +48,7 @@ int	ft_putstr_precision(char *str, int precision)
 
 	len = 0;
 	if (!str)
-		str = "(null)";
+		str = "";
 	while (*str && (precision < 0 || len < precision))
 	{
 		ft_putchar(*str);

@@ -1,57 +1,70 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ginobile <ginobile@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/10 15:27:11 by ginobile          #+#    #+#             */
+/*   Updated: 2025/02/17 18:27:45 by ginobile         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include <stdio.h>
-
-void	original(void)
-{
-	printf("THAT SHOULD'VE BEEN LIKE THIS:\n");
-	printf("[%5%]\n");
-	printf("[%-5%]\n");
-	printf("[%-05%]\n");
-	printf("[%.03s]\n", NULL);
-	printf("[%3.1s]\n", NULL);
-	printf("[%9.1s]\n", NULL);
-	printf("[%-3.1s]\n", NULL);
-	printf("[%-9.1s]\n", NULL);
-	printf("[%.0i]\n", 0);
-	printf("[%.i]\n", 0);
-	printf("[%5.0i]\n", 0);
-	printf("[%5.i]\n", 0);
-	printf("[%-5.0i]\n", 0);
-	printf("[%-5.i]\n", 0);
-	printf("[%.0d]\n", 0);
-	printf("[%.d]\n", 0);
-	printf("[%5.0d]\n", 0);
-	printf("[%5.d]\n", 0);
-	printf("[%-5.0d]\n", 0);
-	printf("[%-5.d]\n", 0);
-	printf("----------------\n");
-}
+void	original(void);
 
 int	main(void)
 {
 	ft_printf("\e[91mTHESE ARE BROKEN TESTS\n\e[0m");
-	ft_printf("[%5%]\n");
-	ft_printf("[%-5%]\n");
-	ft_printf("[%-05%]\n");
-	ft_printf("[%.03s]\n", NULL);
-	ft_printf("[%3.1s]\n", NULL);
-	ft_printf("[%9.1s]\n", NULL);
-	ft_printf("[%-3.1s]\n", NULL);
-	ft_printf("[%-9.1s]\n", NULL);
-	ft_printf("[%.0i]\n", 0);
-	ft_printf("[%.i]\n", 0);
-	ft_printf("[%5.0i]\n", 0);
-	ft_printf("[%5.i]\n", 0);
-	ft_printf("[%-5.0i]\n", 0);
-	ft_printf("[%-5.i]\n", 0);
-	ft_printf("[%.0d]\n", 0);
-	ft_printf("[%.d]\n", 0);
-	ft_printf("[%5.0d]\n", 0);
-	ft_printf("[%5.d]\n", 0);
-	ft_printf("[%-5.0d]\n", 0);
-	ft_printf("[%-5.d]\n", 0);
+	ft_printf("[%-s]\n", NULL);
+	ft_printf("[%23s]\n", NULL);
+	ft_printf("[%s]\n", NULL);
+	ft_printf("[hello, %s.]\n", NULL);
+	ft_printf("[%s]\n", NULL);
+	ft_printf("[%32s]\n", NULL);
+	ft_printf("[%2s]\n", NULL);
+	ft_printf("[%-32s]\n", NULL);
+	ft_printf("[%-16s]\n", NULL);
+	ft_printf("[%-3s]\n", NULL);
+	ft_printf("[%.09s]\n", NULL);
+	ft_printf("[%3.6s]\n", NULL);
+	ft_printf("[%20.6s]\n", NULL);
+	ft_printf("[%-3.8s]\n", NULL);
+	ft_printf("[%-10.8s]\n", NULL);
+	ft_printf("[%08.5u]\n", 34);
+	ft_printf("[%08.5u]\n", 0);
+	ft_printf("[%08.3u]\n", 8375);
+	ft_printf("[%08.5x]\n", 34);
+	ft_printf("[%08.5x]\n", 0);
 	ft_printf("----------------\n");
 	original();
+}
+
+void	original(void)
+{
+	printf("THAT SHOULD'VE BEEN LIKE THIS:\n");
+	printf("[%-s]\n", NULL);
+	printf("[%23s]\n", NULL);
+	printf("[%s]\n", NULL);
+	printf("[hello, %s.]\n", NULL);
+	printf("[%s]\n", NULL);
+	printf("[%32s]\n", NULL);
+	printf("[%2s]\n", NULL);
+	printf("[%-32s]\n", NULL);
+	printf("[%-16s]\n", NULL);
+	printf("[%-3s]\n", NULL);
+	printf("[%.09s]\n", NULL);
+	printf("[%3.6s]\n", NULL);
+	printf("[%20.6s]\n", NULL);
+	printf("[%-3.8s]\n", NULL);
+	printf("[%-10.8s]\n", NULL);
+	printf("[%08.5u]\n", 34);
+	printf("[%08.5u]\n", 0);
+	printf("[%08.3u]\n", 8375);
+	printf("[%08.5x]\n", 34);
+	printf("[%08.5x]\n", 0);
+	printf("----------------\n");
 }
 
 //int main(void)

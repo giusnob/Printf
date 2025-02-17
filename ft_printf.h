@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ginobile <ginobile@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/10 15:27:30 by ginobile          #+#    #+#             */
+/*   Updated: 2025/02/17 18:03:37 by ginobile         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -33,6 +45,7 @@ int		ft_putnbr(long n);
 int		ft_putnbr_unsigned(unsigned int n);
 int		ft_puthex(unsigned long n, char type);
 int		ft_putptr(unsigned long ptr);
+int		calc_total_len(int len_num, t_flags flags);
 
 int		apply_width(int width, int content_len, char pad);
 int		apply_precision(int precision, int num_len);
