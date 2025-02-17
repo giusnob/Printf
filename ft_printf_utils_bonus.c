@@ -6,7 +6,7 @@
 /*   By: ginobile <ginobile@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 15:24:36 by ginobile          #+#    #+#             */
-/*   Updated: 2025/02/17 14:36:28 by ginobile         ###   ########.fr       */
+/*   Updated: 2025/02/17 23:13:31 by ginobile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ int	ft_putstr_precision(char *str, int precision)
 	int	len;
 
 	len = 0;
+	if (!str && precision < 6 && precision != -1)
+		return (0);
 	if (!str)
-		str = "";
+		str = "(null)";
 	while (*str && (precision < 0 || len < precision))
 	{
 		ft_putchar(*str);

@@ -6,7 +6,7 @@
 /*   By: ginobile <ginobile@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 15:24:36 by ginobile          #+#    #+#             */
-/*   Updated: 2025/02/17 14:51:40 by ginobile         ###   ########.fr       */
+/*   Updated: 2025/02/17 22:03:58 by ginobile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	handle_negative_width(t_flags *flags)
 
 static int	handle_dot(t_flags *flags, va_list *args, const char **format)
 {
+	flags->ovo = 0;
 	flags->precision = 0;
 	(*format)++;
 	if (**format == '*')

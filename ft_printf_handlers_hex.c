@@ -6,13 +6,13 @@
 /*   By: ginobile <ginobile@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 15:24:36 by ginobile          #+#    #+#             */
-/*   Updated: 2025/02/17 18:13:26 by ginobile         ###   ########.fr       */
+/*   Updated: 2025/02/17 23:10:11 by ginobile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	count_hex(unsigned int n)
+static int	count_hex(unsigned long n)
 {
 	int	count;
 
@@ -27,7 +27,7 @@ static int	count_hex(unsigned int n)
 	return (count);
 }
 
-static int	get_total_len(unsigned int n, t_flags flags)
+static int	get_total_len(unsigned long n, t_flags flags)
 {
 	int	len_hex;
 	int	prec_padding;
@@ -88,25 +88,27 @@ int	handle_hex(va_list *args, t_flags flags, char type)
 
 int	handle_pointer(va_list *args, t_flags flags)
 {
-	unsigned long	ptr;
-	int				printed;
-	int				hex_count;
-	int				total_len;
+	const unsigned long	ptr = va_arg(*args, unsigned long);
+	int					printed;
+	int					hex_count;
+	int					total_len;
 
-	ptr = va_arg(*args, unsigned long);
 	printed = 0;
-	hex_count = count_hex((unsigned int)ptr);
+	hex_count = count_hex(ptr);
 	if (!ptr)
-		return (ft_putstr("(nil)"));
-	if (ptr == 0 && flags.precision == 0)
-		hex_count = 0;
-	total_len = 2 + hex_count;
-	if (hex_count > 0)
-		total_len = 3;
+		hex_count = ft_strlen("(nil)");
+	total_len = hex_count;
+	if (ptr)
+		total_len += 2;
 	if (!flags.minus)
 		printed += apply_width(flags.width, total_len, ' ');
-	printed += ft_putstr("0x");
-	printed += ft_puthex(ptr, 'x');
+	if (!ptr)
+		printed += ft_putstr("(nil)");
+	if (ptr)
+	{
+		printed += ft_putstr("0x");
+		printed += ft_puthex(ptr, 'x');
+	}
 	if (flags.minus)
 		printed += apply_width(flags.width, total_len, ' ');
 	return (printed);

@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 AR = ar rcs
 
